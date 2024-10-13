@@ -30,6 +30,16 @@ def GenerateCompilersFile(reset_compilers_global: bool=False) -> None:
 	if reset_compilers_global:
 		COMPILERS = dict(compilers)
 
+def LoadCompilersFile() -> dict[str: str]:
+	global COMPILERS
+
+	fp = open("compilers.json", "r", encoding="utf8")
+
+	data: dict[str: str] = load(fp)
+	COMPILERS = dict(data)
+
+	return dict(data)
+
 def PickPreciseCompiler(compiler_name: str, target_system: str, target_arch: str, COMPILERS_DICT: dict = COMPILERS) -> str:
 	if not (compiler_name.lower() in KNOWN_COMPILERS):
 		raise Exception(f"Unknown compiler \"{compiler_name}\"")
