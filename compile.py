@@ -69,7 +69,7 @@ def LetsCompile(ConfName: str="compile_conf.json"):
 
 		if (None in (COMPILER, PARAMS_LIST, OUTPUT_PATH, OUTPUT_NAME, SOURCE_FILES)):
 			raise Exception("Erreur préliminaire : Une valeur ou plus n'a pas pu être récupérée dans le fichier config")
-		
+
 		valid_steps += 1
 
 		if (isinstance(PARAMS_LIST, list)) & (len(PARAMS_LIST) > 0) & (PARAMS_LIST is not None):
@@ -97,7 +97,7 @@ def LetsCompile(ConfName: str="compile_conf.json"):
 
 		for File in SOURCE_FILES:
 			exists: bool = path.exists(File)
-		
+
 			valid_steps += 1
 
 			if not exists:
